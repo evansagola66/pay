@@ -23,14 +23,14 @@ const secret='VcWRq3EQHIa8GBkEa9gELlA4zL';
 
 module.exports={createToken};**/
 
-
+require('dotenv').config();
 const axios = require('axios');
 
 const createToken = async (req, res) => {
-    const consumer='xklspxht80pJxN16hIJx4OtGjIKJOfJEmNtBRRuEldgfG3HA';
-    const secret='VcWRq3EQHIa8GBvmf23W5hxUplwyt7guSrQDlD6LM9zViphr49yJkEa9gELlA4zL';
+    const consumerkey=process.env.CONSUMER_KEY;
+    const consumersecret=process.env.CONSUMER_SECRET;
   // Base64 encode the consumer and secret
-    const auth = Buffer.from(`${consumer}:${secret}`).toString('base64');
+    const auth = Buffer.from(`${consumerkey}:${consumersecret}`).toString('base64');
     const saf='https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials';
   try {
     // Make the API call to generate the token
